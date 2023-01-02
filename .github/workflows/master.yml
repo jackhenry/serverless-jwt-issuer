@@ -1,4 +1,4 @@
-name: Master CICD
+name: Master
 
 on:
   pull_request:
