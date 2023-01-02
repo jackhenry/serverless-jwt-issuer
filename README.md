@@ -189,3 +189,16 @@ quarkus build
   }
 }
 ```
+
+## Database Schema
+
+The service queries a SQL database of clients to verify API requests made. The services only requires one table named `clients`.
+The following is a description of this table:
+
+| Column       | Type      | Description                                                                     |
+|--------------|-----------|---------------------------------------------------------------------------------|
+| id           | `String`  | The id for the client.                                                          |
+| secret       | `String`  | A hash of the client's secret. By default, the secret is hashed using bcrypt.   |
+| hasAdminRole | `boolean` | True if the client can create new client's using the `/admin/create` endpoint.  |
+
+The services utilizes the `quarkus-reactive-pg-client` and `quarkus-hibernate-reactive` extensions to interface with a Postgres database. A different RDBMS can be used by changing properties in the `application.properties` file. Please refer to the documentation of those extensions for more information.
